@@ -1,0 +1,15 @@
+---
+- name: check disk report
+  hosts: all
+  tasks: 
+    - name: disk status
+      shell: "df -h |grep rl-root"
+      register: disk
+    - name: view output
+      debug: 
+        msg:
+          - "{{ disk.stdout}}"
+    - name: copy output to /tmp
+      copy:
+        content: "{{ disk.stdout}}"
+        dest: /tmp/diskreport.txt
