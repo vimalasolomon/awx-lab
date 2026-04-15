@@ -1,0 +1,18 @@
+---
+- name: gather facts info
+  hosts: all
+  gather_facts: false
+  tasks:  
+    - name: gather only hardware
+      setup:
+        gather_subset:
+          - hardware
+          - network
+    - name: gather info 
+      debug:
+        # var: ansible_facts
+        msg:
+          - "the hostname is {{ ansible_hostname }}"
+          - "the keernael version is {{ ansible_kernel }}"
+          - "fqdn is {{ ansible_fqdn }}"[student@master prod]"
+          - "ip address is {{ ansible_facts['default_ipv4']['address'] }}"
