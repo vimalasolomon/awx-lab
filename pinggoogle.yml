@@ -1,0 +1,10 @@
+- name: ping gmail
+  hosts: all
+  tasks:
+    - name: check
+      command: "ping -c3 4.4.4.4"
+      register: out
+    - name: view
+      debug:
+        var: out.stdout
+        
