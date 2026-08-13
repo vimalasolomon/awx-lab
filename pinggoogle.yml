@@ -1,5 +1,6 @@
 - name: ping gmail
   hosts: all
+  become: false
   tasks:
     - name: check
       command: "ping -c3 4.4.4.4"
@@ -7,4 +8,3 @@
     - name: view
       debug:
         var: out.stdout
-        
