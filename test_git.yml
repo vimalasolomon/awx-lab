@@ -1,0 +1,16 @@
+---
+
+- name: Test Git synchronization
+
+  hosts: all
+
+  become: false
+ 
+  tasks:
+
+    - name: Display message
+
+      ansible.builtin.debug:
+
+        msg: "Git synchronization working"
+ 
