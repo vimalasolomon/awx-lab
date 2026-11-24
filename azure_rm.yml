@@ -1,0 +1,20 @@
+---
+plugin: azure.azcollection.azure_rm
+
+auth_source: cli
+
+include_vm_resource_groups:
+  - DevOpsRG
+
+conditional_groups:
+  #windows_servers: "'Windows' in os_type"
+  azure_vms: true
+hostvar_expressions:
+  ansible_host: "'ansivms.centralindia.cloudapp.azure.com'"  #or ip"'20.204.170.103'"
+  ansible_connection: "'winrm'"
+  ansible_port: "5985"
+  ansible_winrm_transport: "'ntlm'"
+  ansible_user: "'azureuser'"
+  ansible_password: "'p@ssw0rd@12345'"
+  #ansible all -i azure_rm.yml -m ansible.windows.win_ping -e "ansible_user=azureuser ansible_password=p@ssw0rd@12345"
+
