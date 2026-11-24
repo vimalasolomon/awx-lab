@@ -1,0 +1,14 @@
+- name: Azure VM Health Check
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Display hostname
+      debug:
+        msg: "Server: {{ ansible_hostname }}"
+    - name: Display OS
+      debug:
+        msg: "OS: {{ ansible_distribution | default(ansible_os_family) }}"
+    - name: Display IP address
+      debug:
+        msg: "IP: {{ ansible_default_ipv4.address | default('N/A') }}"
+
