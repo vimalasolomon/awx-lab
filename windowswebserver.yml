@@ -19,17 +19,7 @@
         start_mode: auto
         state: started
 
-    - name: Enable HTTP firewall rule
-      ansible.windows.win_firewall_rule:
-        name: Allow IIS HTTP
-        localport: 80
-        action: allow
-        direction: in
-        protocol: tcp
-        state: present
-        enabled: true
-
-    - name: Create custom website
+     - name: Create custom website
       ansible.windows.win_copy:
         content: |
           <!DOCTYPE html>
