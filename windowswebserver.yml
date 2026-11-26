@@ -2,22 +2,26 @@
 - name: Install and configure IIS Web Server
   hosts: windows
   gather_facts: yes
+
   tasks:
+
     - name: Install IIS Web Server
       ansible.windows.win_feature:
         name: Web-Server
         state: present
         include_management_tools: true
-      register: iis_install
+
     - name: Start IIS service
       ansible.windows.win_service:
         name: W3SVC
         start_mode: auto
         state: started
-     - name: Create custom website
+
+    - name: Create custom website
       ansible.windows.win_copy:
-        content: "welcome"
-        dest: C:\inetpub\wwwroot\index.html
+        content: "Welcome to IIS configured using Ansible AWX"
+        dest: 'C:\inetpub\wwwroot\index.html'
+
     - name: Display installation result
       ansible.builtin.debug:
-        msg: "IIS installation and website deployment completed"
+        msg: "IIS installation completed"
