@@ -8,7 +8,7 @@
       ansible.windows.win_ping:
 
     - name: Get Windows hostname
-      ansible.windows.win_hostname:
+      ansible.windows.win_command: hostname
       register: hostname_result
 
     - name: Display hostname
