@@ -12,29 +12,15 @@
         state: present
         include_management_tools: true
       register: iis_install
-
     - name: Start IIS service
       ansible.windows.win_service:
         name: W3SVC
         start_mode: auto
         state: started
-
      - name: Create custom website
       ansible.windows.win_copy:
-        content: |
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>AWX IIS Lab</title>
-          </head>
-          <body>
-            <h1>Welcome to IIS Web Server</h1>
-            <h2>Configured using Ansible AWX</h2>
-            <p>Execution Environment Lab</p>
-          </body>
-          </html>
+        content: "welcome"
         dest: C:\inetpub\wwwroot\index.html
-
     - name: Display installation result
       ansible.builtin.debug:
         msg: "IIS installation and website deployment completed"
