@@ -1,11 +1,8 @@
-
 ---
 - name: Install and configure IIS Web Server
   hosts: windows
   gather_facts: yes
-
   tasks:
-
     - name: Install IIS Web Server
       ansible.windows.win_feature:
         name: Web-Server
