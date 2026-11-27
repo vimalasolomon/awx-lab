@@ -1,0 +1,17 @@
+---
+- name: Create Azure Resource Group using AWX
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Create resource group
+      azure.azcollection.azure_rm_resourcegroup:
+        name: awx-lab-rg
+        location: centralindia
+        auth_source: env
+        state: present
+
+    - name: Display success message
+      ansible.builtin.debug:
+        msg: "Resource group awx-lab-rg created successfully"
